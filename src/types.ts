@@ -132,5 +132,7 @@ export interface BrandConfig {
   phone?: string;
   whatsapp?: string;
   email?: string;
+  website?: string;
   location?: string;
+  location_hi?: string;
 }

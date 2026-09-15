@@ -29,9 +29,12 @@ const DEFAULT_BRAND_CONFIG: BrandConfig = {
   tagline_hi: 'अपना मार्ग पहचानें। अपना जीवन रूपांतरित करें।',
   secondaryBrandName: '',
   displayMode: 'founder_first',
-  whatsapp: '+919876543210',
-  email: 'connect@poojaawasthi.com',
-  location: 'New Delhi • Virtual Consultations Worldwide'
+  whatsapp: '+919105731969',
+  phone: '+919105731969',
+  email: 'astro.poojaofficial@gmail.com',
+  website: 'https://dr-pooja-awasthi.vercel.app/',
+  location: 'Dehradun • Virtual Consultations Worldwide',
+  location_hi: 'देहरादून • ऑनलाइन परामर्श विश्वभर में'
 };
 
 const BrandContext = createContext<BrandContextType | undefined>(undefined);
@@ -41,7 +44,15 @@ export const BrandProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     const saved = localStorage.getItem('pooja_awasthi_brand_config');
     if (saved) {
       try {
-        return { ...DEFAULT_BRAND_CONFIG, ...JSON.parse(saved) };
+        const parsed = JSON.parse(saved);
+        // If the user had the previous placeholder numbers/emails/locations, update to the requested ones
+        if (parsed.whatsapp === '+919876543210') parsed.whatsapp = '+919105731969';
+        if (parsed.email === 'connect@poojaawasthi.com') parsed.email = 'astro.poojaofficial@gmail.com';
+        if (!parsed.location || parsed.location.includes('New Delhi')) {
+          parsed.location = 'Dehradun • Virtual Consultations Worldwide';
+          parsed.location_hi = 'देहरादून • ऑनलाइन परामर्श विश्वभर में';
+        }
+        return { ...DEFAULT_BRAND_CONFIG, ...parsed, website: parsed.website || DEFAULT_BRAND_CONFIG.website };
       } catch {
         return DEFAULT_BRAND_CONFIG;
       }

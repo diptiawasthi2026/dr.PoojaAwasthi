@@ -1,7 +1,7 @@
 import React from 'react';
 import { useBrand } from '../context/BrandContext';
 import { SpiritualLotusIcon } from './SacredMandala';
-import { Mail, Phone, MapPin, Calendar, Heart, Globe } from 'lucide-react';
+import { Mail, Phone, MapPin, Calendar, Heart, Globe, ExternalLink } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const { config, language, setLanguage, toggleLanguage, t, setIsBookingModalOpen } = useBrand();
@@ -173,9 +173,22 @@ export const Footer: React.FC = () => {
                 <span>{config.email}</span>
               </a>
 
+              {config.website && (
+                <a
+                  href={config.website}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-2 hover:text-[#D4AF37] transition-colors"
+                >
+                  <Globe size={13} className="text-[#D4AF37]" />
+                  <span className="truncate">{config.website.replace(/^https?:\/\//, '')}</span>
+                  <ExternalLink size={10} className="text-[#8C8074] shrink-0" />
+                </a>
+              )}
+
               <div className="flex items-center gap-2 text-[#8C8074]">
                 <MapPin size={13} className="text-[#D4AF37]" />
-                <span>{config.location}</span>
+                <span>{language === 'hi' ? (config.location_hi || config.location) : config.location}</span>
               </div>
             </div>
 

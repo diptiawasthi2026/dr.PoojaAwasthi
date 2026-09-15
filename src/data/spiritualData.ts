@@ -638,8 +638,8 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
   {
     id: '1',
     name: 'Ananya Sharma',
-    location: 'New Delhi, India',
-    location_hi: 'नई दिल्ली, भारत',
+    location: 'Dehradun, India',
+    location_hi: 'देहरादून, भारत',
     service: 'Vedic Numerology & Life Coaching',
     service_hi: 'वैदिक अंकशास्त्र एवं लाइफ कोचिंग',
     quote: 'Pooja ji’s Mulank and Bhagyank breakdown was astoundingly precise. She didn’t just recite numbers; she helped me understand why my career stalled and gave me practical adjustments that yielded a senior leadership offer within 3 months.',
@@ -711,7 +711,7 @@ export const FAQS: FAQItem[] = [
   {
     question: 'Can Energy Healing work remotely?',
     question_hi: 'क्या दूर रहकर भी ऊर्जा उपचार (डिस्टेंस हीलिंग) प्रभावी होता है?',
-    answer: 'Yes. Prana (subtle life-force energy) transcends physical distance. In quantum energy practices, intention, focus, and resonant vibration can be transmitted and felt clearly whether you are in Delhi, London, or New York.',
-    answer_hi: 'हाँ, प्राण (सूक्ष्म जीवन शक्ति) भौतिक दूरी से परे है। सूक्ष्म ऊर्जा विज्ञान में पवित्र संकल्प, ध्यान और स्पंदन के माध्यम से ऊर्जा का प्रवाह उतनी ही तीव्रता से होता है, चाहे आप दिल्ली, मुंबई, लंदन या न्यूयॉर्क में हों।'
+    answer: 'Yes. Prana (subtle life-force energy) transcends physical distance. In quantum energy practices, intention, focus, and resonant vibration can be transmitted and felt clearly whether you are in Dehradun, London, or New York.',
+    answer_hi: 'हाँ, प्राण (सूक्ष्म जीवन शक्ति) भौतिक दूरी से परे है। सूक्ष्म ऊर्जा विज्ञान में पवित्र संकल्प, ध्यान और स्पंदन के माध्यम से ऊर्जा का प्रवाह उतनी ही तीव्रता से होता है, चाहे आप देहरादून, मुंबई, लंदन या न्यूयॉर्क में हों।'
   }
 ];

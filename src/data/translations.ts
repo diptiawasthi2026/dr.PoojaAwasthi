@@ -192,6 +192,8 @@ export interface Translations {
     taglineHi: string;
     whatsappContact: string;
     emailContact: string;
+    websiteContact: string;
+    locationContact: string;
     quickSuggestions: string;
     resetDefaults: string;
     cancel: string;
@@ -203,6 +205,7 @@ export interface Translations {
   footer: {
     brandNote: string;
     language: string;
+    officialWebsite: string;
     quickLinks: string;
     servicesHeading: string;
     connectHeading: string;
@@ -353,9 +356,9 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       fullName: 'Your Full Name',
       namePlaceholder: 'Enter your name',
       emailAddress: 'Email Address',
-      emailPlaceholder: 'you@example.com',
+      emailPlaceholder: 'astro.poojaofficial@gmail.com',
       phoneWhatsapp: 'WhatsApp / Phone Number',
-      phonePlaceholder: '+91 98765 43210',
+      phonePlaceholder: '+91 91057 31969',
       dob: 'Date of Birth (Optional for Numerology)',
       preferredTime: 'Preferred Time Slot',
       timeMorning: 'Morning (10 AM - 1 PM)',
@@ -383,6 +386,8 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       taglineHi: 'Official Tagline (हिन्दी)',
       whatsappContact: 'WhatsApp Booking Number',
       emailContact: 'Official Consultation Email',
+      websiteContact: 'Official Website URL',
+      locationContact: 'Practice Location & Presence',
       quickSuggestions: 'Suggested Monikers',
       resetDefaults: 'Reset to Defaults',
       cancel: 'Cancel',
@@ -392,6 +397,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     footer: {
       brandNote: 'Spiritual guidance combining Vedic Numerology, Tarot Reading, Energy Healing and Life Coaching. Dedicated to helping seekers understand life patterns and move forward with conscious confidence.',
       language: 'Language',
+      officialWebsite: 'Official Website',
       quickLinks: 'Quick Links',
       servicesHeading: 'Sacred Services',
       connectHeading: 'Direct Connection',
@@ -541,9 +547,9 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       fullName: 'आपका पूरा नाम',
       namePlaceholder: 'अपना नाम दर्ज करें',
       emailAddress: 'ईमेल पता',
-      emailPlaceholder: 'you@example.com',
+      emailPlaceholder: 'astro.poojaofficial@gmail.com',
       phoneWhatsapp: 'व्हाट्सएप / फ़ोन नंबर',
-      phonePlaceholder: '+91 98765 43210',
+      phonePlaceholder: '+91 91057 31969',
       dob: 'जन्मतिथि (अंकशास्त्र हेतु वैकल्पिक)',
       preferredTime: 'पसंदीदा समय',
       timeMorning: 'प्रातःकाल (10 AM - 1 PM)',
@@ -571,6 +577,8 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       taglineHi: 'आधिकारिक टैगलाइन (हिन्दी)',
       whatsappContact: 'व्हाट्सएप बुकिंग नंबर',
       emailContact: 'आधिकारिक परामर्श ईमेल',
+      websiteContact: 'आधिकारिक वेबसाइट लिंक',
+      locationContact: 'परामर्श स्थल एवं केंद्र',
       quickSuggestions: 'सुझाए गए ब्रांड विकल्प',
       resetDefaults: 'मूल रूप में रीसेट करें',
       cancel: 'रद्द करें',
@@ -580,6 +588,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     footer: {
       brandNote: 'वैदिक अंकशास्त्र, टैरो रीडिंग, ऊर्जा उपचार और लाइफ कोचिंग का अनुपम संगम। साधकों को अपने जीवन के पैटर्न्स समझने और सजग आत्मविश्वास के साथ आगे बढ़ने में सहायता प्रदान करना।',
       language: 'भाषा',
+      officialWebsite: 'आधिकारिक वेबसाइट',
       quickLinks: 'त्वरित लिंक',
       servicesHeading: 'आध्यात्मिक सेवाएं',
       connectHeading: 'सीधा संपर्क',

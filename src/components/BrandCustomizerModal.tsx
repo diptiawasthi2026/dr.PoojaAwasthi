@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useBrand } from '../context/BrandContext';
 import { SpiritualLotusIcon } from './SacredMandala';
-import { X, SlidersHorizontal, RotateCcw, Check, Sparkles, Building2, Phone, Mail } from 'lucide-react';
+import { X, SlidersHorizontal, RotateCcw, Check, Sparkles, Building2, Phone, Mail, Globe, MapPin } from 'lucide-react';
 
 export const BrandCustomizerModal: React.FC = () => {
   const { config, updateConfig, resetConfig, language, t, isBrandModalOpen, setIsBrandModalOpen } = useBrand();
@@ -12,8 +12,11 @@ export const BrandCustomizerModal: React.FC = () => {
   const [tagline, setTagline] = useState(config.tagline);
   const [tagline_hi, setTagline_hi] = useState(config.tagline_hi || 'अपना मार्ग पहचानें। अपना जीवन रूपांतरित करें।');
   const [secondaryBrandName, setSecondaryBrandName] = useState(config.secondaryBrandName || '');
-  const [whatsapp, setWhatsapp] = useState(config.whatsapp || '+919876543210');
-  const [email, setEmail] = useState(config.email || 'connect@poojaawasthi.com');
+  const [whatsapp, setWhatsapp] = useState(config.whatsapp || '+919105731969');
+  const [email, setEmail] = useState(config.email || 'astro.poojaofficial@gmail.com');
+  const [website, setWebsite] = useState(config.website || 'https://dr-pooja-awasthi.vercel.app/');
+  const [location, setLocation] = useState(config.location || 'Dehradun • Virtual Consultations Worldwide');
+  const [location_hi, setLocation_hi] = useState(config.location_hi || 'देहरादून • ऑनलाइन परामर्श विश्वभर में');
   const [isSavedNotice, setIsSavedNotice] = useState(false);
 
   if (!isBrandModalOpen) return null;
@@ -27,8 +30,12 @@ export const BrandCustomizerModal: React.FC = () => {
       tagline: tagline.trim() || 'Discover Your Path. Transform Your Life.',
       tagline_hi: tagline_hi.trim() || 'अपना मार्ग पहचानें। अपना जीवन रूपांतरित करें।',
       secondaryBrandName: secondaryBrandName.trim(),
-      whatsapp: whatsapp.trim(),
-      email: email.trim()
+      whatsapp: whatsapp.trim() || '+919105731969',
+      phone: whatsapp.trim() || '+919105731969',
+      email: email.trim() || 'astro.poojaofficial@gmail.com',
+      website: website.trim() || 'https://dr-pooja-awasthi.vercel.app/',
+      location: location.trim() || 'Dehradun • Virtual Consultations Worldwide',
+      location_hi: location_hi.trim() || 'देहरादून • ऑनलाइन परामर्श विश्वभर में'
     });
     setIsSavedNotice(true);
     setTimeout(() => {
@@ -45,8 +52,11 @@ export const BrandCustomizerModal: React.FC = () => {
     setTagline('Discover Your Path. Transform Your Life.');
     setTagline_hi('अपना मार्ग पहचानें। अपना जीवन रूपांतरित करें।');
     setSecondaryBrandName('');
-    setWhatsapp('+919876543210');
-    setEmail('connect@poojaawasthi.com');
+    setWhatsapp('+919105731969');
+    setEmail('astro.poojaofficial@gmail.com');
+    setWebsite('https://dr-pooja-awasthi.vercel.app/');
+    setLocation('Dehradun • Virtual Consultations Worldwide');
+    setLocation_hi('देहरादून • ऑनलाइन परामर्श विश्वभर में');
   };
 
   return (
@@ -207,6 +217,67 @@ export const BrandCustomizerModal: React.FC = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-3.5 py-2.5 rounded-xl border border-[#D5CABB] bg-white text-sm text-[#2D2A26] focus:outline-hidden focus:border-[#8C6D23]"
               />
+            </div>
+          </div>
+
+          <div>
+            <label
+              htmlFor="input-website"
+              className="block text-xs font-semibold uppercase tracking-wider text-[#4A423B] mb-1"
+            >
+              {t.customizer.websiteContact}
+            </label>
+            <div className="relative">
+              <input
+                id="input-website"
+                type="url"
+                value={website}
+                onChange={(e) => setWebsite(e.target.value)}
+                className="w-full pl-9 pr-3.5 py-2.5 rounded-xl border border-[#D5CABB] bg-white text-sm text-[#2D2A26] focus:outline-hidden focus:border-[#8C6D23]"
+                placeholder="https://dr-pooja-awasthi.vercel.app/"
+              />
+              <Globe size={14} className="absolute left-3 top-3.5 text-[#8C6D23]" />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label
+                htmlFor="input-location-en"
+                className="block text-xs font-semibold uppercase tracking-wider text-[#4A423B] mb-1"
+              >
+                {t.customizer.locationContact} (EN)
+              </label>
+              <div className="relative">
+                <input
+                  id="input-location-en"
+                  type="text"
+                  value={location}
+                  onChange={(e) => setLocation(e.target.value)}
+                  placeholder="Dehradun • Virtual Consultations Worldwide"
+                  className="w-full pl-9 pr-3.5 py-2.5 rounded-xl border border-[#D5CABB] bg-white text-sm text-[#2D2A26] focus:outline-hidden focus:border-[#8C6D23]"
+                />
+                <MapPin size={14} className="absolute left-3 top-3.5 text-[#8C6D23]" />
+              </div>
+            </div>
+            <div>
+              <label
+                htmlFor="input-location-hi"
+                className="block text-xs font-semibold uppercase tracking-wider text-[#4A423B] mb-1"
+              >
+                {t.customizer.locationContact} (हिन्दी)
+              </label>
+              <div className="relative">
+                <input
+                  id="input-location-hi"
+                  type="text"
+                  value={location_hi}
+                  onChange={(e) => setLocation_hi(e.target.value)}
+                  placeholder="देहरादून • ऑनलाइन परामर्श विश्वभर में"
+                  className="w-full pl-9 pr-3.5 py-2.5 rounded-xl border border-[#D5CABB] bg-white text-sm text-[#2D2A26] focus:outline-hidden focus:border-[#8C6D23]"
+                />
+                <MapPin size={14} className="absolute left-3 top-3.5 text-[#8C6D23]" />
+              </div>
             </div>
           </div>
 
