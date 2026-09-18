@@ -1,4 +1,26 @@
-export type Language = 'en' | 'hi';
+import { Language } from '../types';
+import { deepMerge } from './translations/types';
+import {
+  bnOverrides,
+  teOverrides,
+  mrOverrides,
+  taOverrides,
+  guOverrides,
+  knOverrides,
+  mlOverrides,
+  paOverrides,
+  orOverrides,
+  urOverrides
+} from './translations/indianLanguages';
+import {
+  esOverrides,
+  frOverrides,
+  deOverrides,
+  arOverrides,
+  ruOverrides
+} from './translations/internationalLanguages';
+
+export type { Language };
 
 export interface Translations {
   // Navigation
@@ -55,6 +77,83 @@ export interface Translations {
     pillar3Desc: string;
     pillar4Title: string;
     pillar4Desc: string;
+    tabBio: string;
+    tabAwards: string;
+    awardsBadge: string;
+    awardsTitle: string;
+    awardsSubtitle: string;
+    awardsCount: string;
+    awardsCaptionPlaceholder: string;
+    awardsUploadPrompt: string;
+    awardsUploadSuccess: string;
+    awardsFilterAll: string;
+    awardsFilterConclave: string;
+    awardsFilterFelicitation: string;
+    awardsFilterPress: string;
+    awardsFilterMemento: string;
+    awardsViewFull: string;
+    awardsClose: string;
+
+    // Meet Pooja Awasthi
+    meetTitle: string;
+    meetSubtitle: string;
+    visionTitle: string;
+    visionText: string;
+    visionQuote: string;
+
+    // Our Philosophy
+    philosophyTitle: string;
+    philosophySubtitle: string;
+    philosophyBelief: string;
+    philosophyContext: string;
+    philosophyPillarsIntro: string;
+    philClarityTitle: string;
+    philClarityDesc: string;
+    philAwarenessTitle: string;
+    philAwarenessDesc: string;
+    philEmpowermentTitle: string;
+    philEmpowermentDesc: string;
+    philosophyDeepText: string;
+    philosophyObjective: string;
+    promiseTitle: string;
+    promiseValues: string;
+    promiseText: string;
+    promiseQuote: string;
+
+    // Why Choose Pooja Awasthi?
+    whyChooseTitle: string;
+    whyChooseSubtitle: string;
+    whyChooseIntro: string;
+    whyPillar1Title: string;
+    whyPillar1Desc: string;
+    whyPillar2Title: string;
+    whyPillar2Desc: string;
+    whyPillar3Title: string;
+    whyPillar3Desc: string;
+    whyPillar4Title: string;
+    whyPillar4Desc: string;
+    whyPillar5Title: string;
+    whyPillar5Desc: string;
+    whyPillar6Title: string;
+    whyPillar6Desc: string;
+    whyChooseQuote: string;
+
+    // Your Journey Starts Here
+    journeyTitle: string;
+    journeySubtitle: string;
+    journeyStep1Title: string;
+    journeyStep1Desc: string;
+    journeyStep2Title: string;
+    journeyStep2Desc: string;
+    journeyStep3Title: string;
+    journeyStep3Desc: string;
+    journeyStep4Title: string;
+    journeyStep4Desc: string;
+    readyTitle: string;
+    readyText: string;
+    readyTagline: string;
+    bookSessionBtn: string;
+    sessionValues: string;
   };
 
   // Services Section
@@ -72,6 +171,10 @@ export interface Translations {
     modalBenefits: string;
     modalClose: string;
     modalBookNow: string;
+    servicesExploreTitle: string;
+    servicesExploreSubtitle: string;
+    resonateTitle: string;
+    resonateQuote: string;
   };
 
   // Numerology Calculator
@@ -214,8 +317,7 @@ export interface Translations {
   };
 }
 
-export const TRANSLATIONS: Record<Language, Translations> = {
-  en: {
+const en: Translations = {
     nav: {
       services: 'Services',
       about: 'About Pooja Ji',
@@ -264,12 +366,89 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       pillar3Title: 'Actionable Clarity',
       pillar3Desc: 'Spiritual insight is only complete when it translates into clear, actionable everyday decisions.',
       pillar4Title: 'Inner Empowerment',
-      pillar4Desc: 'Returning the seat of authority to your own intuition rather than creating spiritual dependency.'
+      pillar4Desc: 'Returning the seat of authority to your own intuition rather than creating spiritual dependency.',
+      tabBio: 'Founder: Dr. Pooja Awasthi',
+      tabAwards: 'Awards & Honors',
+      awardsBadge: 'Prestigious Honors & Felicitations',
+      awardsTitle: 'Awards & National Recognition',
+      awardsSubtitle: 'Celebrated across prestigious national assemblies, universities, and Vedic conclaves for exceptional contribution to Jyotish and spiritual mentorship.',
+      awardsCount: '26 Photographic Honours',
+      awardsCaptionPlaceholder: 'Photo caption space (blank)',
+      awardsUploadPrompt: 'Drop your award photos here or click to select',
+      awardsUploadSuccess: 'Photo updated successfully',
+      awardsFilterAll: 'All Awards (26)',
+      awardsFilterConclave: 'Conclaves & Convocations',
+      awardsFilterFelicitation: 'Stage Felicitations',
+      awardsFilterPress: 'Press & Media',
+      awardsFilterMemento: 'Mementos & Trophies',
+      awardsViewFull: 'View Full Resolution',
+      awardsClose: 'Close Preview',
+
+      // Meet Pooja Awasthi
+      meetTitle: 'Meet Pooja Awasthi',
+      meetSubtitle: 'Spiritual Guidance for Clarity, Growth & Self-Discovery',
+      visionTitle: 'Her Vision',
+      visionText: 'Supporting individuals in understanding their lives with greater awareness, confidence, and a positive perspective—so they can connect with their inner strength and make their personal journey truly meaningful.',
+      visionQuote: 'Your journey is unique. Your answers are within. Let the right guidance illuminate your path.',
+
+      // Our Philosophy
+      philosophyTitle: 'Our Philosophy',
+      philosophySubtitle: 'Guidance That Helps You Understand Yourself',
+      philosophyBelief: 'We believe that the purpose of spiritual guidance is not to definitively predict the future, but to help understand the present with deeper clarity.',
+      philosophyContext: 'Life presents us with countless questions regarding relationships, career, finances, personal growth, and major decisions. In these moments, Vedic Numerology, Tarot, and other spiritual modalities offer an opportunity to reflect on thoughts, emotions, and life patterns from a fresh perspective.',
+      philosophyPillarsIntro: 'Our approach is grounded in three core pillars:',
+      philClarityTitle: 'Clarity',
+      philClarityDesc: 'Supporting you to understand your questions and circumstances from a fresh, illuminated perspective.',
+      philAwarenessTitle: 'Self-Awareness',
+      philAwarenessDesc: 'Recognizing your behaviors, strengths, life patterns, and innate inner potential with greater depth.',
+      philEmpowermentTitle: 'Empowerment',
+      philEmpowermentDesc: 'Encouraging you to reflect upon life choices and step forward with conscious confidence and autonomy.',
+      philosophyDeepText: 'We believe guidance is truly meaningful when it connects an individual to personal responsibility and their own inner strength.',
+      philosophyObjective: 'Our objective is not merely to hand out answers, but to accompany and support you on the sacred journey of understanding your own answers.',
+      promiseTitle: 'Our Promise',
+      promiseValues: 'Compassion. Clarity. Conscious Guidance.',
+      promiseText: 'Every session is held with deep reverence, sensitivity, and personalized understanding.',
+      promiseQuote: 'Understand your patterns. Connect with your inner wisdom. Move forward with clarity.',
+
+      // Why Choose Pooja Awasthi?
+      whyChooseTitle: 'Why Choose Pooja Awasthi?',
+      whyChooseSubtitle: 'A Personalized Approach to Spiritual Guidance',
+      whyChooseIntro: 'Every soul’s life journey is distinct. That is why our guidance approach is deeply personalized, compassionate, and insightful.',
+      whyPillar1Title: 'Personalized Guidance',
+      whyPillar1Desc: 'Guidance thoughtfully attuned to your unique questions, circumstances, and personal journey.',
+      whyPillar2Title: 'Vedic Numerology',
+      whyPillar2Desc: 'Understanding personality traits, tendencies, and cyclic life patterns through date of birth and vibrational numbers.',
+      whyPillar3Title: 'Tarot Insights',
+      whyPillar3Desc: 'An intuitive archetypal approach to illuminate current dynamics and uncover constructive perspectives through symbolic card messages.',
+      whyPillar4Title: 'Holistic Perspective',
+      whyPillar4Desc: 'Harmonizing Numerology, Tarot, Energy Healing, and Life Coaching within one integrated, grounded viewpoint.',
+      whyPillar5Title: 'Compassionate & Confidential',
+      whyPillar5Desc: 'Every session is conducted with highest respect, sensitive attunement, and absolute confidentiality.',
+      whyPillar6Title: 'Empowerment-Focused',
+      whyPillar6Desc: 'We do not impose decisions upon you; we facilitate clarity and self-awareness so you make your own choices with confident conviction.',
+      whyChooseQuote: 'Your questions are personal. Your journey is unique. Your guidance should be too.',
+
+      // Your Journey Starts Here
+      journeyTitle: 'Your Journey Starts Here',
+      journeySubtitle: 'A Simple, Personal & Meaningful Experience',
+      journeyStep1Title: '01 — Share Your Question',
+      journeyStep1Desc: 'Share the theme, question, or life area where you are seeking deeper clarity.',
+      journeyStep2Title: '02 — Receive Personalized Guidance',
+      journeyStep2Desc: 'Relevant spiritual tools and an attuned guidance methodology are tailored to your situation.',
+      journeyStep3Title: '03 — Gain Perspective',
+      journeyStep3Desc: 'Gain the opportunity to see your recurring patterns, hidden possibilities, and situation from an elevated vantage point.',
+      journeyStep4Title: '04 — Move Forward With Clarity',
+      journeyStep4Desc: 'Apply the insights toward your personal evolution, conscious alignment, and self-directed decision making.',
+      readyTitle: 'Ready to Explore Your Path?',
+      readyText: 'Sometimes all we need is a fresh perspective—so that the path which previously seemed unclear can be seen with pristine vision.',
+      readyTagline: 'Begin your journey of self-discovery with Pooja Awasthi.',
+      bookSessionBtn: 'Book Your Personal Guidance Session',
+      sessionValues: 'Clarity • Self-Awareness • Empowerment'
     },
     services: {
       badge: 'Spiritual Offerings',
-      heading: 'Sacred Services & Consultations',
-      subheading: 'Numerology • Tarot Reading • Energy Healing • Life Coaching by Pooja Awasthi',
+      heading: 'Our Services',
+      subheading: 'Explore. Understand. Transform.',
       intro: 'Each consultation is customized to your unique vibrational blueprint, providing grounded clarity, remedial advice, and life-aligning transformation.',
       whatYouGain: 'What You Receive:',
       bookBtn: 'Book Consultation',
@@ -279,7 +458,11 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       modalDeliverables: 'Included in Session:',
       modalBenefits: 'Full Scope of Benefits:',
       modalClose: 'Close',
-      modalBookNow: 'Book This Service'
+      modalBookNow: 'Book This Service',
+      servicesExploreTitle: 'Our Services',
+      servicesExploreSubtitle: 'Explore. Understand. Transform.',
+      resonateTitle: 'Find the guidance that resonates with your journey.',
+      resonateQuote: 'Explore your questions. Understand your patterns. Discover new perspectives.'
     },
     numerology: {
       badge: 'Interactive Vedic Engine',
@@ -404,9 +587,9 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       disclaimer: 'Disclaimer: Consultations, numerology calculations, and intuitive readings provided by Pooja Awasthi are meant for personal reflection, spiritual insight, and conscious self-development. They do not substitute for licensed medical, psychiatric, financial, or legal counsel.',
       copyright: 'All rights reserved.'
     }
-  },
+  };
 
-  hi: {
+const hi: Translations = {
     nav: {
       services: 'सेवाएं',
       about: 'पूजा जी के बारे में',
@@ -420,7 +603,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       customBrandPrompt: 'ब्रांड नाम या उप-शीर्षक बदलें'
     },
     hero: {
-      badgeFounder: 'संस्थापक: पूजा अवस्थी',
+      badgeFounder: 'संस्थापक: डॉ. पूजा अवस्थी',
       badgeRole: 'आध्यात्मिक मार्गदर्शन एवं चेतना संतुलन',
       defaultTagline: 'अपना मार्ग पहचानें। अपना जीवन रूपांतरित करें।',
       subtitle: 'वैदिक अंकशास्त्र • अंतर्ज्ञानी टैरो रीडिंग • सूक्ष्म ऊर्जा उपचार • सजग जीवन मार्गदर्शन',
@@ -435,12 +618,12 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     },
     about: {
       badge: 'परिचय एवं पावन संकल्प',
-      welcomeTitle: 'पूजा अवस्थी की दुनिया में आपका स्वागत है',
+      welcomeTitle: 'डॉ. पूजा अवस्थी की दुनिया में आपका स्वागत है',
       founderRole: 'आध्यात्मिक मार्गदर्शन विशेषज्ञ',
-      p1: 'पूजा अवस्थी एक आध्यात्मिक मार्गदर्शन विशेषज्ञ हैं जो वैदिक अंकशास्त्र (न्यूमेरोलॉजी), टैरो रीडिंग, ऊर्जा उपचार (एनर्जी हीलिंग) और जीवन मार्गदर्शन (लाइफ कोचिंग) की सेवाएं प्रदान करती हैं।',
+      p1: 'डॉ. पूजा अवस्थी एक आध्यात्मिक मार्गदर्शन विशेषज्ञ हैं जो वैदिक अंकशास्त्र (न्यूमेरोलॉजी), टैरो रीडिंग, ऊर्जा उपचार (एनर्जी हीलिंग) और जीवन मार्गदर्शन (लाइफ कोचिंग) की सेवाएं प्रदान करती हैं।',
       p2: 'व्यक्तिगत मार्गदर्शन और करुणामयी दृष्टिकोण के माध्यम से, वह लोगों को उनके जीवन के पैटर्न्स को समझने, स्पष्टता प्राप्त करने, उनकी आंतरिक शक्तियों को पहचानने और अधिक आत्मविश्वास के साथ आगे बढ़ने में मदद करती हैं।',
       p3: 'उनका कार्य आध्यात्मिक अंतर्दृष्टि और व्यावहारिक मार्गदर्शन का सुंदर संगम है, जो व्यक्तिगत विकास, आत्म-खोज और जीवन की चुनौतियों के प्रति अधिक सजग दृष्टिकोण का समर्थन करता है।',
-      p4: 'पूजा अवस्थी के साथ अपनी आत्मिक यात्रा का अन्वेषण करें।',
+      p4: 'डॉ. पूजा अवस्थी के साथ अपनी आत्मिक यात्रा का अन्वेषण करें।',
       connectBtn: 'पूजा जी से संपर्क करें',
       servicesBtn: 'सभी आध्यात्मिक सेवाएं देखें',
       quoteBadge: '“प्रत्येक आत्मा इस सृष्टि में एक अलौकिक ईश्वरीय योजना के साथ आती है। मेरा उद्देश्य आपको उसे समझने और आत्मविश्वास से जीने में सहायता करना है।”',
@@ -455,12 +638,89 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       pillar3Title: 'व्यावहारिक जीवन समन्वय',
       pillar3Desc: 'आध्यात्मिक ज्ञान का वास्तविक महत्व तभी है जब वह आपके रिश्तों, करियर निर्णयों और आत्म-सम्मान में सकारात्मक बदलाव लाए।',
       pillar4Title: 'आत्म-खोज व स्वावलंबन',
-      pillar4Desc: 'आपकी निर्णय-शक्ति आपके हाथों में सौंपना ताकि आप किसी पर निर्भर रहने के बजाय स्वयं के विवेक और स्पष्टता से आगे बढ़ सकें।'
+      pillar4Desc: 'आपकी निर्णय-शक्ति आपके हाथों में सौंपना ताकि आप किसी पर निर्भर रहने के बजाय स्वयं के विवेक और स्पष्टता से आगे बढ़ सकें।',
+      tabBio: 'संस्थापक: डॉ. पूजा अवस्थी',
+      tabAwards: 'पुरस्कार एवं सम्मान',
+      awardsBadge: 'राष्ट्रीय एवं अन्तर्राष्ट्रीय सम्मान',
+      awardsTitle: 'डॉ. पूजा अवस्थी के प्रमुख सम्मान व उपलब्धियां',
+      awardsSubtitle: 'वैदिक ज्योतिष, अंकशास्त्र एवं आध्यात्मिक मार्गदर्शन में विशिष्ट योगदान हेतु प्रतिष्ठित मंचों, विश्वविद्यालयों एवं ज्योतिष महाकुंभ द्वारा अलंकृत।',
+      awardsCount: '26 सम्मान एवं पावन संस्मरण',
+      awardsCaptionPlaceholder: 'चित्र विवरण स्थान (रिक्त)',
+      awardsUploadPrompt: 'अपने सम्मान चित्र यहाँ ड्रॉप करें या चयन करें',
+      awardsUploadSuccess: 'चित्र सफलतापूर्वक सुरक्षित किया गया',
+      awardsFilterAll: 'सभी सम्मान चित्र (26)',
+      awardsFilterConclave: 'सम्मेलन एवं महाकुंभ',
+      awardsFilterFelicitation: 'मंच सम्मान एवं अलंकरण',
+      awardsFilterPress: 'समाचार एवं मीडिया',
+      awardsFilterMemento: 'स्मृति चिन्ह व शील्ड',
+      awardsViewFull: 'पूर्ण आकार में देखें',
+      awardsClose: 'बंद करें',
+
+      // Meet Pooja Awasthi
+      meetTitle: 'Meet Pooja Awasthi',
+      meetSubtitle: 'Spiritual Guidance for Clarity, Growth & Self-Discovery',
+      visionTitle: 'Her Vision',
+      visionText: 'लोगों को अपने जीवन को अधिक जागरूकता, आत्मविश्वास और सकारात्मक दृष्टिकोण के साथ समझने में सहयोग करना—ताकि वे अपनी आंतरिक शक्ति से जुड़ सकें और अपनी व्यक्तिगत यात्रा को अधिक अर्थपूर्ण बना सकें।',
+      visionQuote: 'Your journey is unique. Your answers are within. Let the right guidance illuminate your path.',
+
+      // Our Philosophy
+      philosophyTitle: 'Our Philosophy',
+      philosophySubtitle: 'Guidance That Helps You Understand Yourself',
+      philosophyBelief: 'हमारा विश्वास है कि आध्यात्मिक मार्गदर्शन का उद्देश्य भविष्य को निश्चित रूप से बताना नहीं, बल्कि वर्तमान को अधिक स्पष्टता से समझने में सहायता करना है।',
+      philosophyContext: 'जीवन में रिश्ते, करियर, वित्त, व्यक्तिगत विकास और महत्वपूर्ण निर्णयों से जुड़े अनेक प्रश्न हमारे सामने आते हैं। इन परिस्थितियों में वैदिक अंकशास्त्र, टैरो और अन्य आध्यात्मिक पद्धतियां व्यक्ति को अपने विचारों, भावनाओं और जीवन के पैटर्न्स पर एक अलग दृष्टिकोण से विचार करने का अवसर दे सकती हैं।',
+      philosophyPillarsIntro: 'हमारी approach तीन मूल विचारों पर आधारित है:',
+      philClarityTitle: 'Clarity',
+      philClarityDesc: 'अपने प्रश्नों और परिस्थितियों को एक नए दृष्टिकोण से समझने में सहयोग।',
+      philAwarenessTitle: 'Self-Awareness',
+      philAwarenessDesc: 'अपने व्यवहार, strengths, patterns और inner potential को बेहतर तरीके से पहचानना।',
+      philEmpowermentTitle: 'Empowerment',
+      philEmpowermentDesc: 'अपने जीवन के विकल्पों पर स्वयं विचार करने और अधिक जागरूकता एवं आत्मविश्वास के साथ आगे बढ़ने के लिए प्रोत्साहित करना।',
+      philosophyDeepText: 'हम मानते हैं कि guidance तभी meaningful बनती है जब वह व्यक्ति को अपने जीवन की जिम्मेदारी और अपनी आंतरिक शक्ति से जोड़ती है।',
+      philosophyObjective: 'इसलिए हमारा उद्देश्य केवल answers देना नहीं, बल्कि आपको अपने answers को समझने की यात्रा में सहयोग देना है।',
+      promiseTitle: 'Our Promise',
+      promiseValues: 'Compassion. Clarity. Conscious Guidance.',
+      promiseText: 'हर session को सम्मान, संवेदनशीलता और व्यक्तिगत समझ के साथ प्रस्तुत करने का प्रयास किया जाता है।',
+      promiseQuote: 'Understand your patterns. Connect with your inner wisdom. Move forward with clarity.',
+
+      // Why Choose Pooja Awasthi?
+      whyChooseTitle: 'Why Choose Pooja Awasthi?',
+      whyChooseSubtitle: 'A Personalized Approach to Spiritual Guidance',
+      whyChooseIntro: 'हर व्यक्ति की जीवन-यात्रा अलग होती है। इसलिए हमारा guidance approach भी personalized, compassionate और insightful है।',
+      whyPillar1Title: 'Personalized Guidance',
+      whyPillar1Desc: 'आपके प्रश्न, परिस्थितियों और व्यक्तिगत journey को ध्यान में रखते हुए guidance प्रदान की जाती है।',
+      whyPillar2Title: 'Vedic Numerology',
+      whyPillar2Desc: 'जन्मतिथि और numerological patterns के माध्यम से आपके personality traits, tendencies और life patterns को समझने का प्रयास।',
+      whyPillar3Title: 'Tarot Insights',
+      whyPillar3Desc: 'Tarot cards के symbolic messages के माध्यम से वर्तमान परिस्थितियों और संभावित perspectives को समझने का एक intuitive approach।',
+      whyPillar4Title: 'Holistic Perspective',
+      whyPillar4Desc: 'Numerology, Tarot, Energy Healing और Life Coaching को एक holistic perspective के साथ समझने का प्रयास।',
+      whyPillar5Title: 'Compassionate & Confidential',
+      whyPillar5Desc: 'हर session को सम्मान, sensitivity और privacy के साथ संभालने का प्रयास किया जाता है।',
+      whyPillar6Title: 'Empowerment-Focused',
+      whyPillar6Desc: 'हमारा उद्देश्य आपके लिए decisions लेना नहीं, बल्कि आपको clarity और self-awareness प्राप्त करने में सहयोग देना है, ताकि आप अपने choices स्वयं अधिक confidence के साथ कर सकें।',
+      whyChooseQuote: 'Your questions are personal. Your journey is unique. Your guidance should be too.',
+
+      // Your Journey Starts Here
+      journeyTitle: 'Your Journey Starts Here',
+      journeySubtitle: 'A Simple, Personal & Meaningful Experience',
+      journeyStep1Title: '01 — Share Your Question',
+      journeyStep1Desc: 'अपने जीवन के उस विषय या प्रश्न को साझा करें जिस पर आप clarity चाहते हैं।',
+      journeyStep2Title: '02 — Receive Personalized Guidance',
+      journeyStep2Desc: 'आपकी situation के अनुसार relevant spiritual tools और guidance approach का उपयोग किया जाता है।',
+      journeyStep3Title: '03 — Gain Perspective',
+      journeyStep3Desc: 'अपने patterns, possibilities और situation को एक नए perspective से समझने का अवसर प्राप्त करें।',
+      journeyStep4Title: '04 — Move Forward With Clarity',
+      journeyStep4Desc: 'Guidance को अपने personal growth और conscious decision-making की दिशा में उपयोग करें।',
+      readyTitle: 'Ready to Explore Your Path?',
+      readyText: 'कभी-कभी हमें केवल एक नया perspective चाहिए होता है—ताकि जो रास्ता पहले unclear लग रहा था, उसे हम एक अलग दृष्टिकोण से देख सकें।',
+      readyTagline: 'Begin your journey of self-discovery with Pooja Awasthi.',
+      bookSessionBtn: 'Book Your Personal Guidance Session',
+      sessionValues: 'Clarity • Self-Awareness • Empowerment'
     },
     services: {
       badge: 'आध्यात्मिक सेवाएं',
-      heading: 'सेवाएं एवं पावन पद्धतियां',
-      subheading: 'अंकशास्त्र • टैरो रीडिंग • ऊर्जा उपचार • लाइफ कोचिंग — पूजा अवस्थी द्वारा',
+      heading: 'Our Services',
+      subheading: 'Explore. Understand. Transform.',
       intro: 'प्रत्येक पद्धति को आपकी व्यक्तिगत ऊर्जा के अनुसार ढाला जाता है, जो सटीक स्पष्टता, वैदिक उपाय और जीवन में सकारात्मक रूपांतरण प्रदान करती है।',
       whatYouGain: 'आपको क्या प्राप्त होगा:',
       bookBtn: 'परामर्श बुक करें',
@@ -470,7 +730,11 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       modalDeliverables: 'सत्र में क्या शामिल है:',
       modalBenefits: 'मुख्य लाभ एवं परिणाम:',
       modalClose: 'बंद करें',
-      modalBookNow: 'यह सेवा बुक करें'
+      modalBookNow: 'यह सेवा बुक करें',
+      servicesExploreTitle: 'Our Services',
+      servicesExploreSubtitle: 'Explore. Understand. Transform.',
+      resonateTitle: 'Find the guidance that resonates with your journey.',
+      resonateQuote: 'Explore your questions. Understand your patterns. Discover new perspectives.'
     },
     numerology: {
       badge: 'इंटरएक्टिव वैदिक कैलकुलेटर',
@@ -482,7 +746,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       dobLabel: 'जन्मतिथि',
       dobHint: 'यह आपके मूलांक (स्वभाव) और भाग्यांक (कर्म पथ) को निर्धारित करता है।',
       nameLabel: 'पूरा नाम (नाम कंपन विश्लेषण हेतु - वैकल्पिक)',
-      namePlaceholder: 'जैसे: पूजा अवस्थी',
+      namePlaceholder: 'जैसे: डॉ. पूजा अवस्थी',
       nameHint: 'चाल्डियन अंक प्रणाली द्वारा नाम के कंपन की गणना।',
       calculateBtn: 'अंकशास्त्र गणना करें',
       mulankTitle: 'मूलांक (जन्म अंक / स्वभाव)',
@@ -531,7 +795,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     testimonials: {
       badge: 'सच्चे अनुभव',
       heading: 'साधकों के शब्द एवं विचार',
-      subheading: 'पूजा अवस्थी के मार्गदर्शन से जीवन में स्पष्टता, शांति और रूपांतरण पाने वालों के अनुभव'
+      subheading: 'डॉ. पूजा अवस्थी के मार्गदर्शन से जीवन में स्पष्टता, शांति और रूपांतरण पाने वालों के अनुभव'
     },
     faqs: {
       badge: 'सामान्य जिज्ञासाएं',
@@ -571,7 +835,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       brandNameHi: 'ब्रांड नाम (देवनागरी / हिन्दी)',
       secondaryBrand: 'दूसरा ब्रांड नाम / उप-शीर्षक',
       optional: 'वैकल्पिक',
-      secondaryBrandPlaceholder: 'जैसे: ऑरा - पूजा अवस्थी',
+      secondaryBrandPlaceholder: 'जैसे: ऑरा - डॉ. पूजा अवस्थी',
       secondaryBrandHelp: 'यह नेविगेशन और फुटर में मुख्य नाम के ठीक नीचे प्रदर्शित होता है।',
       taglineEn: 'आधिकारिक टैगलाइन (English)',
       taglineHi: 'आधिकारिक टैगलाइन (हिन्दी)',
@@ -592,8 +856,27 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       quickLinks: 'त्वरित लिंक',
       servicesHeading: 'आध्यात्मिक सेवाएं',
       connectHeading: 'सीधा संपर्क',
-      disclaimer: 'अस्वीकरण: पूजा अवस्थी द्वारा प्रदान किया गया परामर्श, अंकशास्त्र गणना और आध्यात्मिक मार्गदर्शन व्यक्तिगत समझ, आत्म-चिंतन और मानसिक स्पष्टता के उद्देश्य से है। यह किसी भी कानूनी, वित्तीय या चिकित्सीय सलाह का विकल्प नहीं है।',
+      disclaimer: 'अस्वीकरण: डॉ. पूजा अवस्थी द्वारा प्रदान किया गया परामर्श, अंकशास्त्र गणना और आध्यात्मिक मार्गदर्शन व्यक्तिगत समझ, आत्म-चिंतन और मानसिक स्पष्टता के उद्देश्य से है। यह किसी भी कानूनी, वित्तीय या चिकित्सीय सलाह का विकल्प नहीं है।',
       copyright: 'सर्वाधिकार सुरक्षित।'
     }
-  }
+  };
+
+export const TRANSLATIONS: Record<Language, Translations> = {
+  en,
+  hi,
+  bn: deepMerge(hi, bnOverrides),
+  te: deepMerge(hi, teOverrides),
+  mr: deepMerge(hi, mrOverrides),
+  ta: deepMerge(hi, taOverrides),
+  gu: deepMerge(hi, guOverrides),
+  kn: deepMerge(hi, knOverrides),
+  ml: deepMerge(hi, mlOverrides),
+  pa: deepMerge(hi, paOverrides),
+  or: deepMerge(hi, orOverrides),
+  ur: deepMerge(hi, urOverrides),
+  es: deepMerge(en, esOverrides),
+  fr: deepMerge(en, frOverrides),
+  de: deepMerge(en, deOverrides),
+  ar: deepMerge(en, arOverrides),
+  ru: deepMerge(en, ruOverrides),
 };

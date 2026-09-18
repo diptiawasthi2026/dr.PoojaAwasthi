@@ -6,7 +6,7 @@ import { SpiritualLotusIcon } from './SacredMandala';
 import { Compass, Sparkles, HeartHandshake, Flame, Clock, Check, ArrowRight, X, UserCheck } from 'lucide-react';
 
 export const ServicesSection: React.FC = () => {
-  const { config, language, t, setIsBookingModalOpen, setSelectedServiceForBooking } = useBrand();
+  const { config, language, t, setIsBookingModalOpen, setSelectedServiceForBooking, setActivePage } = useBrand();
   const [activeModalService, setActiveModalService] = useState<ServiceItem | null>(null);
 
   const getServiceIcon = (id: string) => {
@@ -42,20 +42,18 @@ export const ServicesSection: React.FC = () => {
             <span>{t.services.badge}</span>
           </div>
           <h2 className="font-cinzel text-3xl sm:text-4xl lg:text-5xl font-bold text-[#2D2A26] tracking-tight">
-            {t.services.heading}
+            {t.services.servicesExploreTitle}
           </h2>
-          <p className="font-serif-cormorant text-lg sm:text-xl text-[#786E64] italic mt-2">
-            {language === 'hi'
-              ? `अंकशास्त्र • टैरो • ऊर्जा उपचार • लाइफ कोचिंग — ${currentFounderName} द्वारा`
-              : `Numerology • Tarot • Healing • Life Coaching by ${currentFounderName}`}
+          <p className="font-serif-cormorant text-xl sm:text-2xl text-[#8C6D23] font-semibold italic mt-2">
+            {t.services.servicesExploreSubtitle}
           </p>
-          <p className="text-sm text-[#564E46] mt-3 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-[#564E46] mt-3 max-w-2xl mx-auto">
             {t.services.intro}
           </p>
         </div>
 
-        {/* 4 Core Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* 5 Core Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {CORE_SERVICES.map((service) => {
             const currentTitle = language === 'hi' ? service.title_hi : service.title;
             const currentTagline = language === 'hi' ? service.tagline_hi : service.tagline;
@@ -139,6 +137,46 @@ export const ServicesSection: React.FC = () => {
             );
           })}
         </div>
+
+        {/* Closing Resonance Banner from prompt */}
+        <div className="max-w-3xl mx-auto text-center p-8 rounded-2xl bg-[#F5EFE6] border border-[#E5DAC6] shadow-xs mb-8">
+          <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-[#2D2A26] mb-2">
+            {t.services.resonateTitle}
+          </h3>
+          <p className="font-serif-cormorant italic text-lg sm:text-xl text-[#8C6D23] font-semibold">
+            {t.services.resonateQuote}
+          </p>
+        </div>
+
+        {/* Dedicated Consultancy Charges Page Banner */}
+        <div className="max-w-3xl mx-auto p-6 rounded-2xl bg-linear-to-r from-[#FAF4EA] via-[#F5EFE6] to-[#FAF4EA] border border-[#D4AF37]/50 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-xl bg-[#8C6D23] text-white flex items-center justify-center shrink-0 shadow-xs">
+              <span className="font-bold text-xl font-sans">₹</span>
+            </div>
+            <div>
+              <h4 className="font-cinzel font-bold text-[#2D2A26] text-base">
+                {language === 'hi' ? 'आध्यात्मिक मार्गदर्शन एवं हीलिंग शुल्क' : 'Spiritual Guidance & Healing Tariff'}
+              </h4>
+              <p className="text-xs text-[#6B5A4B] mt-0.5">
+                {language === 'hi' 
+                  ? 'परामर्श सत्र शुल्क ₹5,100 तथा 11 विशिष्ट हीलिंग सेवाएँ (₹11,000 - ₹31,000), बैंक व UPI विवरण'
+                  : 'Consultation fee ₹5,100 & 11 specialized healing modalities (₹11,000 - ₹31,000), Bank & UPI details'}
+              </p>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={() => {
+              setActivePage('charges');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="w-full sm:w-auto px-5 py-2.5 rounded-full text-xs font-bold text-white bg-[#8C6D23] hover:bg-[#785D1E] transition-colors shadow-xs shrink-0 flex items-center justify-center gap-1.5"
+          >
+            <span>{language === 'hi' ? 'विस्तृत शुल्क सूची देखें' : 'View Full Tariff'}</span>
+            <ArrowRight size={14} />
+          </button>
+        </div>
       </div>
 
       {/* Deep Exploration Modal */}
@@ -220,7 +258,7 @@ export const ServicesSection: React.FC = () => {
               </ul>
             </div>
 
-            <div className="flex items-center justify-between gap-4 pt-4 border-t border-[#EAE3D9]">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-4 border-t border-[#EAE3D9]">
               <div className="flex items-center gap-1.5 text-xs text-[#786E64]">
                 <Clock size={14} />
                 <span>
@@ -228,7 +266,7 @@ export const ServicesSection: React.FC = () => {
                 </span>
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
                 <button
                   type="button"
                   onClick={() => setActiveModalService(null)}
@@ -239,7 +277,7 @@ export const ServicesSection: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => handleBookService(activeModalService.id)}
-                  className="px-5 py-2 rounded-xl text-xs font-semibold text-white bg-linear-to-r from-[#8C6D23] to-[#B8860B]"
+                  className="flex-1 sm:flex-initial px-5 py-2 rounded-xl text-xs font-semibold text-white bg-linear-to-r from-[#8C6D23] to-[#B8860B] text-center"
                 >
                   {t.services.modalBookNow}
                 </button>

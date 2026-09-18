@@ -2,9 +2,10 @@ import React from 'react';
 import { useBrand } from '../context/BrandContext';
 import { SpiritualLotusIcon } from './SacredMandala';
 import { Mail, Phone, MapPin, Calendar, Heart, Globe, ExternalLink } from 'lucide-react';
+import { LanguageSelector } from './LanguageSelector';
 
 export const Footer: React.FC = () => {
-  const { config, language, setLanguage, toggleLanguage, t, setIsBookingModalOpen } = useBrand();
+  const { config, language, setLanguage, toggleLanguage, t, setIsBookingModalOpen, setActivePage } = useBrand();
 
   const currentBrandName = language === 'hi' && config.brandName_hi ? config.brandName_hi : config.brandName;
   const currentFounderName = language === 'hi' && config.founderName_hi ? config.founderName_hi : config.founderName;
@@ -43,30 +44,11 @@ export const Footer: React.FC = () => {
             </p>
 
             {/* Language switcher in footer */}
-            <div className="pt-2 flex items-center gap-2">
+            <div className="pt-2 flex flex-col gap-1.5">
               <span className="text-xs text-[#8C8074] flex items-center gap-1">
                 <Globe size={13} /> {t.footer.language}:
               </span>
-              <div className="inline-flex rounded-md p-0.5 bg-[#2A231C] border border-[#3E342B] text-xs font-semibold">
-                <button
-                  type="button"
-                  onClick={() => setLanguage('en')}
-                  className={`px-2.5 py-1 rounded transition-colors ${
-                    language === 'en' ? 'bg-[#8C6D23] text-white' : 'text-[#A89D91] hover:text-[#FAF8F5]'
-                  }`}
-                >
-                  English
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setLanguage('hi')}
-                  className={`px-2.5 py-1 rounded transition-colors ${
-                    language === 'hi' ? 'bg-[#8C6D23] text-white' : 'text-[#A89D91] hover:text-[#FAF8F5]'
-                  }`}
-                >
-                  हिन्दी
-                </button>
-              </div>
+              <LanguageSelector variant="footer" />
             </div>
           </div>
 
@@ -77,32 +59,59 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2 text-xs text-[#A89D91]">
               <li>
-                <a href="#about" className="hover:text-[#FAF8F5] transition-colors">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setActivePage('charges');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="text-[#D4AF37] hover:text-[#FAF8F5] transition-colors font-medium text-left"
+                >
+                  {language === 'hi' ? '★ परामर्श शुल्क (₹5,100)' : '★ Consultancy Tariff'}
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setActivePage('charges');
+                    setTimeout(() => {
+                      const el = document.getElementById('bank-payment-section');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                  }}
+                  className="hover:text-[#FAF8F5] transition-colors text-left"
+                >
+                  {language === 'hi' ? 'बैंक, UPI व स्कैनर विवरण' : 'Bank & UPI Details'}
+                </button>
+              </li>
+              <li>
+                <a href="#about" onClick={() => setActivePage('home')} className="hover:text-[#FAF8F5] transition-colors">
                   {t.nav.about}
                 </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-[#FAF8F5] transition-colors">
+                <a href="#services" onClick={() => setActivePage('home')} className="hover:text-[#FAF8F5] transition-colors">
                   {t.nav.services}
                 </a>
               </li>
               <li>
-                <a href="#numerology-tool" className="hover:text-[#FAF8F5] transition-colors">
+                <a href="#numerology-tool" onClick={() => setActivePage('home')} className="hover:text-[#FAF8F5] transition-colors">
                   {t.nav.numerology}
                 </a>
               </li>
               <li>
-                <a href="#tarot-tool" className="hover:text-[#FAF8F5] transition-colors">
+                <a href="#tarot-tool" onClick={() => setActivePage('home')} className="hover:text-[#FAF8F5] transition-colors">
                   {t.nav.tarot}
                 </a>
               </li>
               <li>
-                <a href="#chakras" className="hover:text-[#FAF8F5] transition-colors">
+                <a href="#chakras" onClick={() => setActivePage('home')} className="hover:text-[#FAF8F5] transition-colors">
                   {t.nav.chakras}
                 </a>
               </li>
               <li>
-                <a href="#testimonials" className="hover:text-[#FAF8F5] transition-colors">
+                <a href="#testimonials" onClick={() => setActivePage('home')} className="hover:text-[#FAF8F5] transition-colors">
                   {t.nav.testimonials}
                 </a>
               </li>
@@ -116,7 +125,19 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2 text-xs text-[#A89D91]">
               <li>
-                <a href="#services" className="hover:text-[#FAF8F5] transition-colors">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setActivePage('charges');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="text-[#D4AF37] hover:text-[#FAF8F5] transition-colors text-left font-medium"
+                >
+                  {language === 'hi' ? '✦ 11 हीलिंग सेवाएँ एवं शुल्क दर' : '✦ 11 Healing Services Tariff'}
+                </button>
+              </li>
+              <li>
+                <a href="#services" onClick={() => setActivePage('home')} className="hover:text-[#FAF8F5] transition-colors">
                   {language === 'hi' ? 'वैदिक अंकशास्त्र परामर्श' : 'Vedic Numerology Reading'}
                 </a>
               </li>

@@ -59,7 +59,7 @@ export const TestimonialsFAQ: React.FC = () => {
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-[#F2ECE1] flex items-center justify-between">
+              <div className="pt-4 border-t border-[#F2ECE1] flex flex-wrap items-center justify-between gap-2">
                 <div>
                   <h4 className="font-cinzel text-sm font-bold text-[#2D2A26]">
                     {item.name}

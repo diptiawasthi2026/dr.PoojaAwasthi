@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { BrandConfig, Language } from '../types';
 import { TRANSLATIONS, Translations } from '../data/translations';
+import { isRtl } from '../data/languages';
 
 interface BrandContextType {
   config: BrandConfig;
@@ -18,13 +19,15 @@ interface BrandContextType {
   setIsBookingModalOpen: (open: boolean) => void;
   selectedServiceForBooking: string;
   setSelectedServiceForBooking: (service: string) => void;
+  activePage: 'home' | 'charges';
+  setActivePage: (page: 'home' | 'charges') => void;
 }
 
 const DEFAULT_BRAND_CONFIG: BrandConfig = {
   brandName: 'Pooja Awasthi',
-  brandName_hi: 'पूजा अवस्थी',
+  brandName_hi: 'डॉ. पूजा अवस्थी',
   founderName: 'Pooja Awasthi',
-  founderName_hi: 'पूजा अवस्थी',
+  founderName_hi: 'डॉ. पूजा अवस्थी',
   tagline: 'Discover Your Path. Transform Your Life.',
   tagline_hi: 'अपना मार्ग पहचानें। अपना जीवन रूपांतरित करें।',
   secondaryBrandName: '',
@@ -45,6 +48,9 @@ export const BrandProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
+        // If the user had previous placeholder name, upgrade it to डॉ. पूजा अवस्थी
+        if (parsed.brandName_hi === 'पूजा अवस्थी' || parsed.brandName_hi === 'Dr. पूजा अवस्थी') parsed.brandName_hi = 'डॉ. पूजा अवस्थी';
+        if (parsed.founderName_hi === 'पूजा अवस्थी' || parsed.founderName_hi === 'Dr. पूजा अवस्थी') parsed.founderName_hi = 'डॉ. पूजा अवस्थी';
         // If the user had the previous placeholder numbers/emails/locations, update to the requested ones
         if (parsed.whatsapp === '+919876543210') parsed.whatsapp = '+919105731969';
         if (parsed.email === 'connect@poojaawasthi.com') parsed.email = 'astro.poojaofficial@gmail.com';
@@ -61,11 +67,11 @@ export const BrandProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   });
 
   const [language, setLanguageState] = useState<Language>(() => {
-    const savedLang = localStorage.getItem('pooja_awasthi_lang');
-    if (savedLang === 'hi' || savedLang === 'en') {
+    const savedLang = localStorage.getItem('pooja_awasthi_lang') as Language;
+    if (savedLang && TRANSLATIONS[savedLang]) {
       return savedLang;
     }
-    return 'en'; // default to English, with instant toggle to Hindi
+    return 'en'; // default to English
   });
 
   const [activeTheme, setActiveTheme] = useState<'gold' | 'amethyst' | 'sage'>('gold');
@@ -73,9 +79,51 @@ export const BrandProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [selectedServiceForBooking, setSelectedServiceForBooking] = useState('numerology');
 
+  const [activePage, setActivePageState] = useState<'home' | 'charges'>(() => {
+    if (typeof window !== 'undefined') {
+      const hash = window.location.hash.toLowerCase();
+      if (hash === '#charges' || hash === '#consultancy-charges' || hash === '#fees') {
+        return 'charges';
+      }
+    }
+    return 'home';
+  });
+
+  const setActivePage = (page: 'home' | 'charges') => {
+    setActivePageState(page);
+    if (typeof window !== 'undefined') {
+      if (page === 'charges') {
+        window.location.hash = '#charges';
+      } else {
+        // If on charges hash and switching to home, clear it
+        if (window.location.hash.toLowerCase() === '#charges' || window.location.hash.toLowerCase() === '#consultancy-charges') {
+          history.replaceState(null, '', window.location.pathname);
+        }
+      }
+    }
+  };
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.toLowerCase();
+      if (hash === '#charges' || hash === '#consultancy-charges' || hash === '#fees') {
+        setActivePageState('charges');
+      } else if (hash === '' || hash === '#home' || hash === '#services' || hash === '#about') {
+        setActivePageState('home');
+      }
+    };
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
   useEffect(() => {
     localStorage.setItem('pooja_awasthi_brand_config', JSON.stringify(config));
   }, [config]);
+
+  useEffect(() => {
+    document.documentElement.dir = isRtl(language) ? 'rtl' : 'ltr';
+    document.documentElement.lang = language;
+  }, [language]);
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
@@ -83,6 +131,7 @@ export const BrandProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   };
 
   const toggleLanguage = () => {
+    // If English, toggle to Hindi; if Hindi, toggle to English; otherwise toggle to Hindi
     const nextLang = language === 'en' ? 'hi' : 'en';
     setLanguage(nextLang);
   };
@@ -114,7 +163,9 @@ export const BrandProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         isBookingModalOpen,
         setIsBookingModalOpen,
         selectedServiceForBooking,
-        setSelectedServiceForBooking
+        setSelectedServiceForBooking,
+        activePage,
+        setActivePage
       }}
     >
       {children}

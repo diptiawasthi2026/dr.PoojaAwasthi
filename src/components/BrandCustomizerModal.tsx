@@ -7,7 +7,7 @@ export const BrandCustomizerModal: React.FC = () => {
   const { config, updateConfig, resetConfig, language, t, isBrandModalOpen, setIsBrandModalOpen } = useBrand();
 
   const [brandName, setBrandName] = useState(config.brandName);
-  const [brandName_hi, setBrandName_hi] = useState(config.brandName_hi || 'पूजा अवस्थी');
+  const [brandName_hi, setBrandName_hi] = useState(config.brandName_hi || 'डॉ. पूजा अवस्थी');
   const [founderName, setFounderName] = useState(config.founderName);
   const [tagline, setTagline] = useState(config.tagline);
   const [tagline_hi, setTagline_hi] = useState(config.tagline_hi || 'अपना मार्ग पहचानें। अपना जीवन रूपांतरित करें।');
@@ -25,7 +25,7 @@ export const BrandCustomizerModal: React.FC = () => {
     e.preventDefault();
     updateConfig({
       brandName: brandName.trim() || 'Pooja Awasthi',
-      brandName_hi: brandName_hi.trim() || 'पूजा अवस्थी',
+      brandName_hi: brandName_hi.trim() || 'डॉ. पूजा अवस्थी',
       founderName: founderName.trim() || 'Pooja Awasthi',
       tagline: tagline.trim() || 'Discover Your Path. Transform Your Life.',
       tagline_hi: tagline_hi.trim() || 'अपना मार्ग पहचानें। अपना जीवन रूपांतरित करें।',
@@ -47,7 +47,7 @@ export const BrandCustomizerModal: React.FC = () => {
   const handleReset = () => {
     resetConfig();
     setBrandName('Pooja Awasthi');
-    setBrandName_hi('पूजा अवस्थी');
+    setBrandName_hi('डॉ. पूजा अवस्थी');
     setFounderName('Pooja Awasthi');
     setTagline('Discover Your Path. Transform Your Life.');
     setTagline_hi('अपना मार्ग पहचानें। अपना जीवन रूपांतरित करें।');
@@ -124,7 +124,7 @@ export const BrandCustomizerModal: React.FC = () => {
                 type="text"
                 value={brandName_hi}
                 onChange={(e) => setBrandName_hi(e.target.value)}
-                placeholder="पूजा अवस्थी"
+                placeholder="डॉ. पूजा अवस्थी"
                 className="w-full px-3.5 py-2.5 rounded-xl border border-[#D5CABB] bg-white text-sm text-[#2D2A26] focus:outline-hidden focus:border-[#8C6D23]"
               />
             </div>
@@ -288,9 +288,9 @@ export const BrandCustomizerModal: React.FC = () => {
             </span>
             <div className="flex flex-wrap gap-1.5">
               {[
-                { label: 'Pooja Awasthi', label_hi: 'पूजा अवस्थी' },
-                { label: 'Aura by Pooja Awasthi', label_hi: 'ऑरा - पूजा अवस्थी' },
-                { label: 'Divine Path by Pooja', label_hi: 'डिवाइन पाथ - पूजा अवस्थी' }
+                { label: 'Pooja Awasthi', label_hi: 'डॉ. पूजा अवस्थी' },
+                { label: 'Aura by Pooja Awasthi', label_hi: 'ऑरा - डॉ. पूजा अवस्थी' },
+                { label: 'Divine Path by Pooja', label_hi: 'डिवाइन पाथ - डॉ. पूजा अवस्थी' }
               ].map((s) => (
                 <button
                   key={s.label}
@@ -307,17 +307,17 @@ export const BrandCustomizerModal: React.FC = () => {
             </div>
           </div>
 
-          <div className="pt-4 flex items-center justify-between gap-3 border-t border-[#EAE3D9]">
+          <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 border-t border-[#EAE3D9]">
             <button
               type="button"
               onClick={handleReset}
-              className="px-3 py-2 text-xs font-medium text-[#786E64] hover:text-[#2D2A26] flex items-center gap-1"
+              className="px-3 py-2 text-xs font-medium text-[#786E64] hover:text-[#2D2A26] flex items-center justify-center sm:justify-start gap-1"
             >
               <RotateCcw size={13} />
               <span>{t.customizer.resetDefaults}</span>
             </button>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center justify-end gap-2">
               <button
                 type="button"
                 onClick={() => setIsBrandModalOpen(false)}
@@ -328,7 +328,7 @@ export const BrandCustomizerModal: React.FC = () => {
               <button
                 type="submit"
                 id="btn-save-brand-config"
-                className="px-6 py-2.5 rounded-xl text-xs font-semibold text-white bg-linear-to-r from-[#8C6D23] to-[#B8860B] hover:from-[#785D1E] hover:to-[#A37508] shadow-xs flex items-center gap-1.5"
+                className="flex-1 sm:flex-initial px-6 py-2.5 rounded-xl text-xs font-semibold text-white bg-linear-to-r from-[#8C6D23] to-[#B8860B] hover:from-[#785D1E] hover:to-[#A37508] shadow-xs flex items-center justify-center gap-1.5"
               >
                 {isSavedNotice ? <Check size={14} /> : <Sparkles size={14} />}
                 <span>{isSavedNotice ? t.customizer.saved : t.customizer.applyChanges}</span>

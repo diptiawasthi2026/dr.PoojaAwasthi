@@ -168,6 +168,48 @@ export const CORE_SERVICES: ServiceItem[] = [
     sessionDuration_hi: '60 मिनट',
     whoIsThisFor: 'Visionaries, seekers, and professionals who desire meaningful personal growth, greater emotional self-mastery, and clear purposeful direction.',
     whoIsThisFor_hi: 'वे सभी जो व्यक्तिगत विकास, आत्म-नियंत्रण और जीवन में एक स्पष्ट उद्देश्यपूर्ण दिशा प्राप्त करना चाहते हैं।'
+  },
+  {
+    id: 'combined',
+    title: 'Combined Guidance',
+    title_hi: 'एकीकृत संपूर्ण मार्गदर्शन (कंबाइंड गाइडेंस)',
+    hindiTitle: 'एकीकृत मार्गदर्शन',
+    tagline: 'Multi-perspective integration of Numerology, Tarot and Life Guidance',
+    tagline_hi: 'न्यूमेरोलॉजी, टैरो और लाइफ गाइडेंस का संतुलित एवं समग्र एकीकरण',
+    iconName: 'Sparkles',
+    accentColor: 'from-amber-600/20 via-purple-600/20 to-teal-600/20',
+    summary: 'When you wish to explore your question from multiple perspectives, integrate Vedic Numerology, Tarot insights, and conscious Life Coaching in one cohesive session.',
+    summary_hi: 'जब आप अपने प्रश्न को multiple perspectives से explore करना चाहते हैं, तो Numerology, Tarot और Life Guidance को एक साथ integrate किया जा सकता है।',
+    fullDescription: 'An all-encompassing guidance experience curated by Pooja Awasthi. Combines your Vedic birth numbers, energetic card reflections, and practical life-coaching action steps for holistic clarity across relationships, career, personal direction, and inner peace.',
+    fullDescription_hi: 'डॉ. पूजा अवस्थी द्वारा संचालित एक बहुआयामी मार्गदर्शन सत्र। इसमें आपके जन्मांक, टैरो प्रतीकों के संकेत और व्यावहारिक जीवन मार्गदर्शन को एक सूत्र में पिरोकर जीवन के हर पहलू पर गहरी स्पष्टता और आत्मविश्वास प्रदान किया जाता है।',
+    benefits: [
+      'Explore challenges across numerological, intuitive, and practical dimensions',
+      'Understand cosmic timing aligned with real-world decision making',
+      'Synthesize subconscious desires with actionable life strategies',
+      'Receive multi-dimensional clarity for complex crossroads',
+      'Personalized integration guidelines and ongoing grounding practices'
+    ],
+    benefits_hi: [
+      'अंकशास्त्र, अंतर्ज्ञान और व्यावहारिक जीवन तीनों स्तरों पर प्रश्नों का विश्लेषण',
+      'ब्रह्मांडीय समय चक्र (Timing) और वास्तविक निर्णयों के बीच सामंजस्य',
+      'अवचेतन मन के संदेशों और दैनिक जीवन की प्राथमिकताओं का समन्वय',
+      'जटिल पारिवारिक, वैवाहिक अथवा करियर दोराहों पर संपूर्ण स्पष्टता',
+      'सत्रोपरांत व्यक्तिगत साधना, वैदिक उपाय एवं स्पष्ट कार्ययोजना'
+    ],
+    deliverables: [
+      'Comprehensive 75-90 minute multi-disciplinary consultation',
+      'Integrated Numerology analysis + 3-Tier Tarot Spread + Life Roadmap',
+      'Customized spiritual remedies & decision-making checklist'
+    ],
+    deliverables_hi: [
+      '75 से 90 मिनट का समग्र बहु-विषयक 1-on-1 सत्र',
+      'एकीकृत अंकशास्त्र रिपोर्ट + त्रिकाल टैरो विश्लेषण + जीवन कार्ययोजना',
+      'व्यक्तिगत वैदिक उपाय, शुभ तिथियां एवं निर्णय सहायता गाइड'
+    ],
+    sessionDuration: '75 - 90 minutes',
+    sessionDuration_hi: '75 - 90 मिनट',
+    whoIsThisFor: 'Seekers facing pivotal multifaceted life crossroads seeking total clarity without choosing between separate readings.',
+    whoIsThisFor_hi: 'जो जीवन के सबसे महत्वपूर्ण निर्णयों के सामने हैं और अंकशास्त्र, टैरो व जीवन मार्गदर्शन तीनों की संयुक्त शक्ति चाहते हैं।'
   }
 ];
 
@@ -669,7 +711,7 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     service: 'Life Coaching & Chakra Alignment',
     service_hi: 'लाइफ कोचिंग एवं चक्र संतुलन',
     quote: 'Pooja Awasthi combines genuine spiritual depth with the grounded realism of an executive coach. She held space for my vulnerability while giving me actionable boundaries that transformed my family relationships.',
-    quote_hi: 'पूजा अवस्थी में आध्यात्मिक गहराई और व्यावहारिक दृष्टिकोण का अद्भुत संतुलन है। उन्होंने मुझे समझा और ऐसी स्वस्थ सीमाएं तय करने में मदद की जिससे मेरे पारिवारिक रिश्ते संवर गए।',
+    quote_hi: 'डॉ. पूजा अवस्थी में आध्यात्मिक गहराई और व्यावहारिक दृष्टिकोण का अद्भुत संतुलन है। उन्होंने मुझे समझा और ऐसी स्वस्थ सीमाएं तय करने में मदद की जिससे मेरे पारिवारिक रिश्ते संवर गए।',
     rating: 5,
     date: 'December 2025',
     date_hi: 'दिसंबर 2025'

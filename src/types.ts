@@ -1,5 +1,24 @@
-export type ServiceId = 'numerology' | 'tarot' | 'healing' | 'coaching';
-export type Language = 'en' | 'hi';
+export type ServiceId = 'numerology' | 'tarot' | 'healing' | 'coaching' | 'combined';
+export type Language =
+  // Major Indian Languages (10+)
+  | 'hi' // Hindi (हिन्दी)
+  | 'bn' // Bengali (বাংলা)
+  | 'te' // Telugu (తెలుగు)
+  | 'mr' // Marathi (मराठी)
+  | 'ta' // Tamil (தமிழ்)
+  | 'gu' // Gujarati (ગુજરાતી)
+  | 'kn' // Kannada (ಕನ್ನಡ)
+  | 'ml' // Malayalam (മലയാളം)
+  | 'pa' // Punjabi (ਪੰਜਾਬੀ)
+  | 'or' // Odia (ଓଡ଼ିଆ)
+  | 'ur' // Urdu (اردو)
+  // Major International Languages (6)
+  | 'en' // English
+  | 'es' // Spanish (Español)
+  | 'fr' // French (Français)
+  | 'de' // German (Deutsch)
+  | 'ar' // Arabic (العربية)
+  | 'ru'; // Russian (Русский)
 
 export interface ServiceItem {
   id: ServiceId;
@@ -135,4 +154,14 @@ export interface BrandConfig {
   website?: string;
   location?: string;
   location_hi?: string;
+}
+
+export interface AwardPhotoItem {
+  id: string;
+  filename: string;
+  category: 'conclave' | 'felicitation' | 'press' | 'memento';
+  caption: string; // explicitly blank as requested
+  event?: string;
+  event_hi?: string;
+  alt: string;
 }

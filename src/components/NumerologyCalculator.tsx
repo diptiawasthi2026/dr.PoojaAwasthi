@@ -246,7 +246,7 @@ export const NumerologyCalculator: React.FC = () => {
                   <span className="text-[11px] font-semibold text-[#786E64] block">
                     {t.numerology.luckyColors}
                   </span>
-                  <span className="font-medium text-[#2D2A26]">
+                  <span className="font-medium text-[#2D2A26] break-words">
                     {(language === 'hi' ? mulankData.luckyColors_hi : mulankData.luckyColors).join(', ')}
                   </span>
                 </div>
@@ -254,7 +254,7 @@ export const NumerologyCalculator: React.FC = () => {
                   <span className="text-[11px] font-semibold text-[#786E64] block">
                     {t.numerology.luckyDays}
                   </span>
-                  <span className="font-medium text-[#2D2A26]">
+                  <span className="font-medium text-[#2D2A26] break-words">
                     {(language === 'hi' ? mulankData.luckyDays_hi : mulankData.luckyDays).join(', ')}
                   </span>
                 </div>
@@ -262,7 +262,7 @@ export const NumerologyCalculator: React.FC = () => {
                   <span className="text-[11px] font-semibold text-[#786E64] block">
                     {t.numerology.element}
                   </span>
-                  <span className="font-medium text-[#2D2A26]">
+                  <span className="font-medium text-[#2D2A26] break-words">
                     {language === 'hi' ? mulankData.element_hi : mulankData.element}
                   </span>
                 </div>
@@ -270,7 +270,7 @@ export const NumerologyCalculator: React.FC = () => {
                   <span className="text-[11px] font-semibold text-[#786E64] block">
                     {t.numerology.sacredMantra}
                   </span>
-                  <span className="font-medium text-[#8C6D23] truncate block" title={mulankData.coreMantra}>
+                  <span className="font-medium text-[#8C6D23] break-words block" title={mulankData.coreMantra}>
                     {mulankData.coreMantra}
                   </span>
                 </div>

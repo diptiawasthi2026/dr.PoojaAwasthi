@@ -12,7 +12,8 @@ export const BookingModal: React.FC = () => {
     isBookingModalOpen,
     setIsBookingModalOpen,
     selectedServiceForBooking,
-    setSelectedServiceForBooking
+    setSelectedServiceForBooking,
+    setActivePage
   } = useBrand();
 
   const [fullName, setFullName] = useState('');
@@ -69,6 +70,19 @@ export const BookingModal: React.FC = () => {
                   ? `पूजा जी के साथ 1-on-1 गोपनीय वीडियो / फोन सत्र`
                   : `Personalized 1-on-1 Virtual Session with ${currentFounderName}`}
               </p>
+
+              {/* Quick link to charges & UPI */}
+              <button
+                type="button"
+                onClick={() => {
+                  handleClose();
+                  setActivePage('charges');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="mt-2.5 inline-flex items-center gap-1 text-[11px] font-semibold text-[#8C6D23] bg-[#FAF4EA] hover:bg-[#F2E7D5] border border-[#D4AF37]/50 px-3 py-1 rounded-full transition-colors"
+              >
+                <span>{language === 'hi' ? 'परामर्श शुल्क (₹5,100) व बैंक/UPI विवरण देखें →' : 'View Consultancy Charges (₹5,100) & Bank details →'}</span>
+              </button>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -179,7 +193,7 @@ export const BookingModal: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setPreferredSlot('morning')}
-                    className={`py-2 px-3 rounded-xl text-xs font-medium border transition-all ${
+                    className={`py-2 px-1 sm:px-3 rounded-xl text-[11px] sm:text-xs font-medium border text-center transition-all ${
                       preferredSlot === 'morning'
                         ? 'bg-[#8C6D23] text-white border-[#8C6D23] shadow-xs'
                         : 'bg-white text-[#564E46] border-[#D5CABB]'
@@ -190,7 +204,7 @@ export const BookingModal: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setPreferredSlot('afternoon')}
-                    className={`py-2 px-3 rounded-xl text-xs font-medium border transition-all ${
+                    className={`py-2 px-1 sm:px-3 rounded-xl text-[11px] sm:text-xs font-medium border text-center transition-all ${
                       preferredSlot === 'afternoon'
                         ? 'bg-[#8C6D23] text-white border-[#8C6D23] shadow-xs'
                         : 'bg-white text-[#564E46] border-[#D5CABB]'
@@ -201,7 +215,7 @@ export const BookingModal: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setPreferredSlot('evening')}
-                    className={`py-2 px-3 rounded-xl text-xs font-medium border transition-all ${
+                    className={`py-2 px-1 sm:px-3 rounded-xl text-[11px] sm:text-xs font-medium border text-center transition-all ${
                       preferredSlot === 'evening'
                         ? 'bg-[#8C6D23] text-white border-[#8C6D23] shadow-xs'
                         : 'bg-white text-[#564E46] border-[#D5CABB]'
@@ -230,13 +244,13 @@ export const BookingModal: React.FC = () => {
                 />
               </div>
 
-              <div className="pt-2 flex items-center justify-between gap-3">
-                <div className="flex items-center gap-1.5 text-xs text-[#786E64]">
+              <div className="pt-2 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3">
+                <div className="flex items-center justify-center sm:justify-start gap-1.5 text-xs text-[#786E64]">
                   <ShieldCheck size={14} className="text-[#8C6D23]" />
                   <span>100% Confidential</span>
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center justify-end gap-2 w-full sm:w-auto">
                   <button
                     type="button"
                     onClick={handleClose}
@@ -247,7 +261,7 @@ export const BookingModal: React.FC = () => {
                   <button
                     type="submit"
                     id="btn-confirm-booking"
-                    className="px-6 py-2.5 rounded-xl text-xs font-semibold text-white bg-linear-to-r from-[#8C6D23] to-[#B8860B] hover:from-[#785D1E] hover:to-[#A37508] shadow-xs flex items-center gap-2"
+                    className="flex-1 sm:flex-initial px-6 py-2.5 rounded-xl text-xs font-semibold text-white bg-linear-to-r from-[#8C6D23] to-[#B8860B] hover:from-[#785D1E] hover:to-[#A37508] shadow-xs flex items-center justify-center gap-2"
                   >
                     <Send size={13} />
                     <span>{t.booking.confirmBooking}</span>
@@ -287,13 +301,28 @@ export const BookingModal: React.FC = () => {
               </p>
             </div>
 
-            <div className="pt-4">
+            <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
               <button
                 type="button"
                 onClick={handleClose}
                 className="px-6 py-2.5 rounded-full text-xs font-semibold text-white bg-[#8C6D23] hover:bg-[#785D1E]"
               >
                 {t.booking.close}
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  handleClose();
+                  setActivePage('charges');
+                  setTimeout(() => {
+                    const el = document.getElementById('bank-payment-section');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }, 100);
+                }}
+                className="px-5 py-2.5 rounded-full text-xs font-semibold text-[#8C6D23] bg-[#FAF4EA] hover:bg-[#F2E7D5] border border-[#D4AF37]/60"
+              >
+                {language === 'hi' ? 'शुल्क भुगतान हेतु UPI/बैंक विवरण देखें →' : 'View UPI / Bank Details for Payment →'}
               </button>
             </div>
           </div>
